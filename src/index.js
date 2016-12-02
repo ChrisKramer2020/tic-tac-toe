@@ -1,24 +1,13 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import { AppContainer } from 'react-hot-loader'
-import App from './components/App'
-
+if (process.env.NODE_ENV !== 'production') require('./index.html')
 import './styles/screen.sass'
 
-const root = document.getElementById('root')
-
-const render = (app) => {
-  ReactDOM.render(
-    <AppContainer>{app}</AppContainer>,
-    root
-  )
+const main = () => {
+  document.querySelector('h1').textContent += '?'
 }
 
-render(<App />)
+document.addEventListener('DOMContentLoaded', main)
 
 if (module.hot) {
-  module.hot.accept('./components/App', () => {
-    const NextApp = require('./components/App').default
-    render(<NextApp />)
-  })
+  module.hot.dispose(() => window.location.reload())
+  module.hot.accept(err => console.error(err))
 }
