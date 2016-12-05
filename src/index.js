@@ -61,6 +61,15 @@ const main = () => {
   const cells = document.querySelectorAll('td')
   for (let i = 0; i < cells.length; i++) {
     cells[i].addEventListener('click', takeTurn)
+    document.querySelector('button').addEventListener('click', reset)
+  }
+}
+
+const reset = () => {
+  document.body.className = ''
+  const cells = document.querySelectorAll('td')
+  for (let i = 0; i < cells.length; i++) {
+    cells[i].textContent = ''
   }
 }
 
